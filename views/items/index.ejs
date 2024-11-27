@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<main>
+  <h1>Browse Mangas</h1>
+
+  <!-- Display flash messages -->
+  <% if (errorMessages && errorMessages.length > 0) { %>
+  <div class="alert alert-danger">
+    <% errorMessages.forEach(function (message) { %>
+    <p><%= message %></p>
+    <% }); %>
+  </div>
+  <% } %> <% if (successMessages && successMessages.length > 0) { %>
+  <div class="alert alert-success">
+    <% successMessages.forEach(function (message) { %>
+    <p><%= message %></p>
+    <% }); %>
+  </div>
+  <% } %>
+
+  <ul class="items-list">
+    <% items.forEach(item => { %>
+    <li class="item">
+      <a href="/items/<%= item._id %>">
+        <img src="<%= item.image %>" alt="<%= item.name %>" />
+        <div class="item-info">
+          <h3><%= item.name %></h3>
+          <p class="price">$<%= item.price.toFixed(2) %></p>
+        </div>
+      </a>
+    </li>
+    <% }) %>
+  </ul>
+</main>
+
+<%- include('../partials/footer') %>

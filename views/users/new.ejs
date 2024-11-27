@@ -1,0 +1,45 @@
+<!-- views/users/new.ejs -->
+<%- include('../partials/header') %>
+
+<main>
+  <div class="container">
+    <h1>Sign Up</h1>
+
+    <% if (errorMessages && errorMessages.length > 0) { %>
+    <div class="alert alert-danger">
+      <% errorMessages.forEach(function (message) { %>
+      <p><%= message %></p>
+      <% }); %>
+    </div>
+    <% } %> <% if (successMessages && successMessages.length > 0) { %>
+    <div class="alert alert-success">
+      <% successMessages.forEach(function (message) { %>
+      <p><%= message %></p>
+      <% }); %>
+    </div>
+    <% } %>
+
+    <form action="/users" method="POST">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p>
+      Already have an account?
+      <a href="/users/login">Login here</a>
+    </p>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<h2>Sell Your Manga</h2>
+<form action="/items" method="POST" enctype="multipart/form-data">
+  <label>Title:</label>
+  <input type="text" name="name" required />
+
+  <label>Condition:</label>
+  <select name="condition" required>
+    <option value="">Select Condition</option>
+    <option value="New">New</option>
+    <option value="Used">Used</option>
+  </select>
+
+  <label>Price:</label>
+  <input type="number" name="price" step="0.01" required />
+
+  <label>Details:</label>
+  <textarea name="description"></textarea>
+
+  <label for="image">Upload Image:</label>
+  <input type="file" id="image" name="image" accept="image/*" />
+
+  <button type="submit">Add Manga</button>
+</form>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,32 @@
+
+<%- include('../partials/header') %>
+
+<h2>Edit Manga</h2>
+<form action="/items/<%= item._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+  <label>Name:</label>
+  <input type="text" name="name" value="<%= item.name %>" required>
+
+  <label>Condition:</label>
+  <select name="condition">
+    <option value="New" <%= item.condition === 'New' ? 'selected' : '' %>>New</option>
+    <option value="Used" <%= item.condition === 'Used' ? 'selected' : '' %>>Used</option>
+  </select>
+
+  <label>Price:</label>
+  <input type="number" name="price" value="<%= item.price %>" step="0.01" required>
+
+  <label>Description:</label>
+  <textarea name="description"><%= item.description %></textarea>
+
+  <% if (item.image) { %>
+    <p>Current Image:</p>
+    <img src="<%= item.image %>" alt="<%= item.name %>" width="200">
+  <% } %>
+
+  <label>Change Image:</label>
+  <input type="file" name="image" accept="image/*">
+
+  <button type="submit">Update Manga</button>
+</form>
+
+<%- include('../partials/footer') %>

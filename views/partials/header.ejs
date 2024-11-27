@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manga Marketplace</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="/"
+            ><img src="/images/logo.png" alt="Manga Marketplace Logo"
+          /></a>
+          <a href="/">Manga Marketplace</a>
+        </div>
+        <div class="search-bar">
+          <form action="/items/search" method="GET" class="search-form">
+            <input
+              type="text"
+              name="q"
+              placeholder="Search mangas..."
+              required
+            />
+          </form>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/items">Browse Mangas</a></li>
+
+            <% if (user) { %>
+            <!-- Links for Logged-In Users -->
+            <li><a href="/items/new">Sell Manga</a></li>
+            <li><a href="/users/profile">My Account</a></li>
+            <li><a href="/users/logout">Log Out</a></li>
+            <% } else { %>
+            <!-- Links for Guests -->
+            <li><a href="/users/new">Sign Up</a></li>
+            <li><a href="/users/login">Login</a></li>
+            <% } %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

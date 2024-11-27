@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<main>
+  <div class="container">
+    <h1>Welcome, <%= user.firstName %>!</h1>
+
+    <% if (successMessages && successMessages.length > 0) { %>
+    <div class="alert alert-success">
+      <% successMessages.forEach(function (message) { %>
+      <p><%= message %></p>
+      <% }); %>
+    </div>
+    <% } %> <% if (errorMessages && errorMessages.length > 0) { %>
+    <div class="alert alert-danger">
+      <% errorMessages.forEach(function (message) { %>
+      <p><%= message %></p>
+      <% }); %>
+    </div>
+    <% } %>
+
+    <h2>Your Items</h2>
+    <% if (items && items.length > 0) { %>
+    <ul>
+      <% items.forEach(function(item) { %>
+      <li>
+        <a href="/items/<%= item._id %>"><%= item.title %></a>
+        - $<%= item.price %>
+        <a href="/items/<%= item._id %>/edit">Edit</a>
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>You have not listed any items yet.</p>
+    <% } %>
+
+    <a href="/items/new">Sell a Manga</a>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>
